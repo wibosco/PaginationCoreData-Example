@@ -19,7 +19,7 @@ NSString * kPTEBaseURLString = @"https://api.stackexchange.com/2.2/questions?sit
 
 + (PTEFeed *)questionFeedWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    return [managedObjectContext cds_retrieveFirstEntryForEntityClass:[PTEFeed class]];
+    return (PTEFeed *)[managedObjectContext cds_retrieveFirstEntryForEntityClass:[PTEFeed class]];
 }
 
 + (PTEFeed *)questionFeed

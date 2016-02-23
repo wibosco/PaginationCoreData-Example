@@ -82,6 +82,10 @@
             page.index = @(feed.pages.count);
             
             [feed addPagesObject:page];
+            
+            /*----------------*/
+            
+            [[CDSServiceManager sharedInstance] saveBackgroundManagedObjectContext];
         }];
         
         /*----------------*/

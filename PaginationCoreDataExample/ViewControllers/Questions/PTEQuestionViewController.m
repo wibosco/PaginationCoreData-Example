@@ -10,6 +10,7 @@
 
 #import <CoreDataServices/NSEntityDescription+CDSEntityDescription.h>
 #import <CoreDataServices/CDSServiceManager.h>
+#import <FetchedResultsController/FRCTableViewFetchedResultsController.h>
 
 #import "PTEQuestionTableViewCell.h"
 #import "PTEQuestionsAPIManager.h"
@@ -26,6 +27,8 @@
 @property (nonatomic, strong) PTEFeed *feed;
 
 @property (nonatomic, strong) PTETableViewPaginatingView *paginatingView;
+
+@property (nonatomic, strong) FRCTableViewFetchedResultsController *fetchedResultsController;
 
 @property (nonatomic, assign, getter = isPaginating) BOOL paginating;
 
@@ -64,13 +67,9 @@
 
 - (void)refresh
 {
-    __weak typeof(self) weakSelf = self;
-    
+
     [PTEQuestionsAPIManager retrievalQuestionsForFeed:self.feed
-                                           completion:^(BOOL successful)
-    {
-        [weakSelf.tableView reloadData];
-    }];
+                                           completion:nil];
 }
 
 - (void)paginate
@@ -156,46 +155,71 @@
     return _paginatingView;
 }
 
+#pragma mark - FetchResultsController
+
+- (FRCTableViewFetchedResultsController *)fetchedResultsController
+{
+    if (!_fetchedResultsController)
+    {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([PTEQuestion class])];
+        
+        NSSortDescriptor *pageIndexSort = [NSSortDescriptor sortDescriptorWithKey:@"page.index"
+                                                                        ascending:YES];
+        
+        NSSortDescriptor *questionIndexSort = [NSSortDescriptor sortDescriptorWithKey:@"index"
+                                                                            ascending:YES];
+        
+        request.sortDescriptors = @[pageIndexSort, questionIndexSort];
+        
+        _fetchedResultsController = [[FRCTableViewFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                  managedObjectContext:[CDSServiceManager sharedInstance].mainManagedObjectContext
+                                                                                    sectionNameKeyPath:nil
+                                                                                             cacheName:nil];
+        
+        _fetchedResultsController.tableView = self.tableView;
+        
+        [_fetchedResultsController performFetch:nil];
+    }
+    
+    return _fetchedResultsController;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return self.feed.orderedQuestions.count;
-    
-    return 0;
+    return self.fetchedResultsController.fetchedObjects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    PTEQuestion *question = self.feed.orderedQuestions[indexPath.row];
-//    
-//    PTEQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[PTEQuestionTableViewCell reuseIdentifier]
-//                                                                  forIndexPath:indexPath];
-//    
-//    cell.questionLabel.text = question.title;
-//    cell.authorLabel.text = question.author;
-//    
-//    /*-------------------*/
-//    
-//    NSUInteger numberOfRowsInSection = [tableView numberOfRowsInSection:indexPath.section];
-//    NSUInteger paginationTriggerIndex = numberOfRowsInSection - 10;
-//    
-//    BOOL triggerPagination = (indexPath.row >= MIN(paginationTriggerIndex, numberOfRowsInSection - 1));
-//    
-//    if (triggerPagination)
-//    {
-//        [self paginate];
-//    }
-//    
-//    /*-------------------*/
-//    
-//    [cell layoutByApplyingConstraints];
-//    
-//    /*-------------------*/
-//    
-//    return cell;
+    PTEQuestion *question = self.fetchedResultsController.fetchedObjects[indexPath.row];
     
-    return nil;
+    PTEQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[PTEQuestionTableViewCell reuseIdentifier]
+                                                                  forIndexPath:indexPath];
+    
+    cell.questionLabel.text = question.title;
+    cell.authorLabel.text = question.author;
+    
+    /*-------------------*/
+    
+    NSUInteger numberOfRowsInSection = [tableView numberOfRowsInSection:indexPath.section];
+    NSUInteger paginationTriggerIndex = numberOfRowsInSection - 10;
+    
+    BOOL triggerPagination = (indexPath.row >= MIN(paginationTriggerIndex, numberOfRowsInSection - 1));
+    
+    if (triggerPagination)
+    {
+        [self paginate];
+    }
+    
+    /*-------------------*/
+    
+    [cell layoutByApplyingConstraints];
+    
+    /*-------------------*/
+    
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
