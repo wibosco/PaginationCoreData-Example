@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
     <entity name="PTEFeed" representedClassName="PTEFeed" syncable="YES">
+        <attribute name="arePagesInSequence" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PTEPage" inverseName="feed" inverseEntity="PTEPage" syncable="YES"/>
     </entity>
     <entity name="PTEPage" representedClassName="PTEPage" syncable="YES">
@@ -18,7 +19,7 @@
         <relationship name="page" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PTEPage" inverseName="questions" inverseEntity="PTEPage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PTEFeed" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="PTEFeed" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="PTEPage" positionX="-54" positionY="-9" width="128" height="120"/>
         <element name="PTEQuestion" positionX="-36" positionY="9" width="128" height="120"/>
     </elements>

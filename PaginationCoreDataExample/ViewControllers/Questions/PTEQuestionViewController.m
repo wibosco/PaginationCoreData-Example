@@ -19,6 +19,8 @@
 #import "PTEQuestion.h"
 #import "PTEQuestionsAPIManager.h"
 #import "PTETableViewPaginatingView.h"
+#import "PTEDeleteOutOfSyncQuestionPagesOperation.h"
+#import "PTEQueueManager.h"
 
 @interface PTEQuestionViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -220,6 +222,21 @@
     /*-------------------*/
     
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.fetchedResultsController.fetchedObjects.count > indexPath.row)
+    {
+        if(!self.feed.arePagesInSequence.boolValue)
+        {
+            PTEDeleteOutOfSyncQuestionPagesOperation *operation = [[PTEDeleteOutOfSyncQuestionPagesOperation alloc] init];
+            
+            [[PTEQueueManager sharedInstance].queue addOperation:operation];
+        }
+    }
 }
 
 #pragma mark - UITableViewDelegate

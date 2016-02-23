@@ -11,12 +11,11 @@
 
 #import "PTEFeed.h"
 
-@class PTEPage;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PTEFeed (CoreDataProperties)
 
+@property (nullable, nonatomic, retain) NSNumber *arePagesInSequence;
 @property (nullable, nonatomic, retain) NSSet<PTEPage *> *pages;
 
 @end

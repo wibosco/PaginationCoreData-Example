@@ -13,6 +13,7 @@
 
 @implementation PTEFeed (CoreDataProperties)
 
+@dynamic arePagesInSequence;
 @dynamic pages;
 
 @end

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class PTEPage;
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * kPTEBaseURLString;
@@ -18,6 +20,7 @@ extern NSString * kPTEBaseURLString;
 @property (nonatomic, strong, readonly) NSArray *orderedPages;
 
 + (PTEFeed *)questionFeed;
++ (PTEFeed *)questionFeedWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 @end
 

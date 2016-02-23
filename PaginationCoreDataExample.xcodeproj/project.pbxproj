@@ -24,9 +24,10 @@
 		43B28DE31C7C7E860046F6AC /* PTEQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B28DDC1C7C7E860046F6AC /* PTEQuestionTableViewCell.m */; };
 		43B28DE41C7C7E860046F6AC /* PTEQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B28DDE1C7C7E860046F6AC /* PTEQuestionViewController.m */; };
 		43B28DE51C7C7E860046F6AC /* PTETableViewPaginatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B28DE21C7C7E860046F6AC /* PTETableViewPaginatingView.m */; };
-		43B28DEE1C7C7FBA0046F6AC /* PTEFeed+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B28DEB1C7C7FBA0046F6AC /* PTEFeed+CoreDataProperties.m */; };
 		43B28DF31C7C81180046F6AC /* PTEQuestion+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B28DF01C7C81180046F6AC /* PTEQuestion+CoreDataProperties.m */; };
 		43B28DF41C7C81180046F6AC /* PTEPage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B28DF21C7C81180046F6AC /* PTEPage+CoreDataProperties.m */; };
+		43B28E2D1C7CC3CB0046F6AC /* PTEDeleteOutOfSyncQuestionPagesOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B28E2C1C7CC3CB0046F6AC /* PTEDeleteOutOfSyncQuestionPagesOperation.m */; };
+		43B28E301C7CC4450046F6AC /* PTEFeed+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B28E2F1C7CC4450046F6AC /* PTEFeed+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,12 +72,14 @@
 		43B28DDE1C7C7E860046F6AC /* PTEQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEQuestionViewController.m; sourceTree = "<group>"; };
 		43B28DE11C7C7E860046F6AC /* PTETableViewPaginatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTETableViewPaginatingView.h; sourceTree = "<group>"; };
 		43B28DE21C7C7E860046F6AC /* PTETableViewPaginatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTETableViewPaginatingView.m; sourceTree = "<group>"; };
-		43B28DEA1C7C7FBA0046F6AC /* PTEFeed+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PTEFeed+CoreDataProperties.h"; sourceTree = "<group>"; };
-		43B28DEB1C7C7FBA0046F6AC /* PTEFeed+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PTEFeed+CoreDataProperties.m"; sourceTree = "<group>"; };
 		43B28DEF1C7C81180046F6AC /* PTEQuestion+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PTEQuestion+CoreDataProperties.h"; sourceTree = "<group>"; };
 		43B28DF01C7C81180046F6AC /* PTEQuestion+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PTEQuestion+CoreDataProperties.m"; sourceTree = "<group>"; };
 		43B28DF11C7C81180046F6AC /* PTEPage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PTEPage+CoreDataProperties.h"; sourceTree = "<group>"; };
 		43B28DF21C7C81180046F6AC /* PTEPage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PTEPage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		43B28E2B1C7CC3CB0046F6AC /* PTEDeleteOutOfSyncQuestionPagesOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEDeleteOutOfSyncQuestionPagesOperation.h; sourceTree = "<group>"; };
+		43B28E2C1C7CC3CB0046F6AC /* PTEDeleteOutOfSyncQuestionPagesOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEDeleteOutOfSyncQuestionPagesOperation.m; sourceTree = "<group>"; };
+		43B28E2E1C7CC4450046F6AC /* PTEFeed+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PTEFeed+CoreDataProperties.h"; sourceTree = "<group>"; };
+		43B28E2F1C7CC4450046F6AC /* PTEFeed+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PTEFeed+CoreDataProperties.m"; sourceTree = "<group>"; };
 		6EEE707CBA122435FF4A5FC8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9B3ACA66779EFC50CB9A6D9C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BC16E282EA09E748C87E6A68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				43B28DD91C7C7E860046F6AC /* Cells */,
+				43B28E291C7CC3AA0046F6AC /* Operations */,
 				43B28DDD1C7C7E860046F6AC /* PTEQuestionViewController.h */,
 				43B28DDE1C7C7E860046F6AC /* PTEQuestionViewController.m */,
 				43B28DDF1C7C7E860046F6AC /* Views */,
@@ -290,8 +294,8 @@
 			children = (
 				43B28DCD1C7C7E170046F6AC /* PTEFeed.h */,
 				43B28DCE1C7C7E170046F6AC /* PTEFeed.m */,
-				43B28DEA1C7C7FBA0046F6AC /* PTEFeed+CoreDataProperties.h */,
-				43B28DEB1C7C7FBA0046F6AC /* PTEFeed+CoreDataProperties.m */,
+				43B28E2E1C7CC4450046F6AC /* PTEFeed+CoreDataProperties.h */,
+				43B28E2F1C7CC4450046F6AC /* PTEFeed+CoreDataProperties.m */,
 				43B28DD11C7C7E170046F6AC /* PTEPage.h */,
 				43B28DD21C7C7E170046F6AC /* PTEPage.m */,
 				43B28DF11C7C81180046F6AC /* PTEPage+CoreDataProperties.h */,
@@ -344,6 +348,23 @@
 				43B28DE21C7C7E860046F6AC /* PTETableViewPaginatingView.m */,
 			);
 			path = Paginating;
+			sourceTree = "<group>";
+		};
+		43B28E291C7CC3AA0046F6AC /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				43B28E2A1C7CC3AA0046F6AC /* Deletion */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		43B28E2A1C7CC3AA0046F6AC /* Deletion */ = {
+			isa = PBXGroup;
+			children = (
+				43B28E2B1C7CC3CB0046F6AC /* PTEDeleteOutOfSyncQuestionPagesOperation.h */,
+				43B28E2C1C7CC3CB0046F6AC /* PTEDeleteOutOfSyncQuestionPagesOperation.m */,
+			);
+			path = Deletion;
 			sourceTree = "<group>";
 		};
 		7067825F11C322A42DCB584D /* Frameworks */ = {
@@ -518,8 +539,10 @@
 				43B28DD61C7C7E170046F6AC /* PTEFeed.m in Sources */,
 				43B28DE31C7C7E860046F6AC /* PTEQuestionTableViewCell.m in Sources */,
 				43B28DD81C7C7E170046F6AC /* PTEPage.m in Sources */,
+				43B28E301C7CC4450046F6AC /* PTEFeed+CoreDataProperties.m in Sources */,
 				43B28DBD1C7C7D790046F6AC /* PTEQueueManager.m in Sources */,
 				43B28DF31C7C81180046F6AC /* PTEQuestion+CoreDataProperties.m in Sources */,
+				43B28E2D1C7CC3CB0046F6AC /* PTEDeleteOutOfSyncQuestionPagesOperation.m in Sources */,
 				43B28DBF1C7C7D790046F6AC /* PTEQuestionParser.m in Sources */,
 				43B28DC61C7C7DBA0046F6AC /* Model.xcdatamodeld in Sources */,
 				43B28DF41C7C81180046F6AC /* PTEPage+CoreDataProperties.m in Sources */,
@@ -529,7 +552,6 @@
 				43B28DAB1C7C7B000046F6AC /* main.m in Sources */,
 				43B28DA61C7C7B000046F6AC /* AppDelegate.m in Sources */,
 				43B28DC01C7C7D790046F6AC /* PTEQuestionsAPIManager.m in Sources */,
-				43B28DEE1C7C7FBA0046F6AC /* PTEFeed+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
