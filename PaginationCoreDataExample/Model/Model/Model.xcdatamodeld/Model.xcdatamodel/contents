@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="PTEFeed" representedClassName="PTEFeed" syncable="YES">
+        <relationship name="pages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PTEPage" inverseName="feed" inverseEntity="PTEPage" syncable="YES"/>
+    </entity>
+    <entity name="PTEPage" representedClassName="PTEPage" syncable="YES">
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="nextHref" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="feed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PTEFeed" inverseName="pages" inverseEntity="PTEFeed" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PTEQuestion" inverseName="page" inverseEntity="PTEQuestion" syncable="YES"/>
+    </entity>
+    <entity name="PTEQuestion" representedClassName="PTEQuestion" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="page" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PTEPage" inverseName="questions" inverseEntity="PTEPage" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PTEFeed" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="PTEPage" positionX="-54" positionY="-9" width="128" height="120"/>
+        <element name="PTEQuestion" positionX="-36" positionY="9" width="128" height="120"/>
+    </elements>
+</model>
