@@ -39,6 +39,9 @@
                                                                                                   predicate:deletionPredicate
                                                                                           saveAfterDeletion:NO];
          
+         PTEFeed *feed = [PTEFeed questionFeedWithManagedObjectContext:[CDSServiceManager sharedInstance].backgroundManagedObjectContext];
+         feed.arePagesInSequence = @(YES);
+         
          [[CDSServiceManager sharedInstance] saveBackgroundManagedObjectContext];
      }];
 }
