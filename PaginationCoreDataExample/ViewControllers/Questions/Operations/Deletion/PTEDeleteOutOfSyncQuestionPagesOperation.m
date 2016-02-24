@@ -33,7 +33,7 @@
                                                                                                                                sortDescriptors:@[sortDescriptor]];
          
          
-         NSPredicate *deletionPredicate = [NSPredicate predicateWithFormat:@"objectID != %@", topPage.objectID];
+         NSPredicate *deletionPredicate = [NSPredicate predicateWithFormat:@"SELF != %@", topPage.objectID];
          
          [[CDSServiceManager sharedInstance].backgroundManagedObjectContext cds_deleteEntriesForEntityClass:[PTEPage class]
                                                                                                   predicate:deletionPredicate

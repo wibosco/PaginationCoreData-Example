@@ -69,8 +69,9 @@
 
 - (void)refresh
 {
-
+    
     [PTEQuestionsAPIManager retrievalQuestionsForFeed:self.feed
+                                              refresh:YES
                                            completion:nil];
 }
 
@@ -88,6 +89,7 @@
     __weak typeof(self) weakSelf = self;
     
     [PTEQuestionsAPIManager retrievalQuestionsForFeed:self.feed
+                                              refresh:NO
                                            completion:^(BOOL successful)
      {
          [weakSelf.tableView reloadData];
@@ -198,7 +200,7 @@
     PTEQuestion *question = self.fetchedResultsController.fetchedObjects[indexPath.row];
     
     PTEQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[PTEQuestionTableViewCell reuseIdentifier]
-                                                                  forIndexPath:indexPath];
+                                                                     forIndexPath:indexPath];
     
     cell.questionLabel.text = question.title;
     cell.authorLabel.text = question.author;

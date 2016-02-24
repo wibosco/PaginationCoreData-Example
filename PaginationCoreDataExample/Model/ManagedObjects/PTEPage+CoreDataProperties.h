@@ -11,9 +11,6 @@
 
 #import "PTEPage.h"
 
-#import "PTEQuestion.h"
-#import "PTEFeed.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PTEPage (CoreDataProperties)
@@ -21,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *createdDate;
 @property (nullable, nonatomic, retain) NSString *nextHref;
 @property (nullable, nonatomic, retain) NSNumber *index;
+@property (nullable, nonatomic, retain) NSNumber *fullPage;
 @property (nullable, nonatomic, retain) NSSet<PTEQuestion *> *questions;
 @property (nullable, nonatomic, retain) PTEFeed *feed;
 

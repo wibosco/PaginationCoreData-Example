@@ -6,6 +6,7 @@
     </entity>
     <entity name="PTEPage" representedClassName="PTEPage" syncable="YES">
         <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fullPage" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="nextHref" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="feed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PTEFeed" inverseName="pages" inverseEntity="PTEFeed" syncable="YES"/>
@@ -15,12 +16,13 @@
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="page" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PTEPage" inverseName="questions" inverseEntity="PTEPage" syncable="YES"/>
     </entity>
     <elements>
         <element name="PTEFeed" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="PTEPage" positionX="-54" positionY="-9" width="128" height="120"/>
-        <element name="PTEQuestion" positionX="-36" positionY="9" width="128" height="120"/>
+        <element name="PTEPage" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="PTEQuestion" positionX="-36" positionY="9" width="128" height="135"/>
     </elements>
 </model>

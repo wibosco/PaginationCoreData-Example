@@ -9,6 +9,7 @@
 #import "PTEQuestionParser.h"
 
 #import <CoreDataServices/NSEntityDescription+CDSEntityDescription.h>
+#import <CoreDataServices/NSManagedObjectContext+CDSRetrieval.h>
 #import <CoreDataServices/CDSServiceManager.h>
 
 #import "PTEQuestion.h"
@@ -32,7 +33,14 @@
         PTEQuestion *question = [self parseQuestion:questionResponse];
         question.index = @(index);
         
-        [page addQuestionsObject:question];
+        if (!question.page)
+        {
+            [page addQuestionsObject:question];
+        }
+        else
+        {
+            page.fullPage = @(NO);
+        }
     }
     
     return page;
@@ -40,13 +48,25 @@
 
 - (PTEQuestion *)parseQuestion:(NSDictionary *)questionReponse
 {
-    PTEQuestion *question = [NSEntityDescription cds_insertNewObjectForEntityForClass:[PTEQuestion class]
-                                                               inManagedObjectContext:[CDSServiceManager sharedInstance].backgroundManagedObjectContext];
+    NSUInteger questionID = [questionReponse[@"question_id"] unsignedIntegerValue];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"questionID == %@", @(questionID)];
+    
+    PTEQuestion *question = (PTEQuestion *)[[CDSServiceManager sharedInstance].backgroundManagedObjectContext cds_retrieveFirstEntryForEntityClass:[PTEQuestion class]
+                                                                                                                                         predicate:predicate];
+    
+    if (!question)
+    {
+        question = [NSEntityDescription cds_insertNewObjectForEntityForClass:[PTEQuestion class]
+                                                      inManagedObjectContext:[CDSServiceManager sharedInstance].backgroundManagedObjectContext];
+        
+        question.questionID = @(questionID);
+    }
+    
+    question.title = questionReponse[@"title"];
     
     NSDictionary *ownerResponse = questionReponse[@"owner"];
     
     question.author = ownerResponse[@"display_name"];
-    question.title = questionReponse[@"title"];
     
     return question;
 }

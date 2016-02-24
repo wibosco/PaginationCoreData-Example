@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class PTEFeed;
+@class PTEQuestion;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PTEPage : NSManagedObject

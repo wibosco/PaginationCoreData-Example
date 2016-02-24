@@ -16,6 +16,7 @@
 
 - (instancetype)initWithFeedID:(NSManagedObjectID *)feedID
                           data:(NSData *)data
+                       refresh:(BOOL)refresh
                     completion:(void(^)(BOOL successful))completion;
 
 @end

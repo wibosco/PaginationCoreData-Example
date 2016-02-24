@@ -13,6 +13,7 @@
 @interface PTEQuestionsAPIManager : NSObject
 
 + (void)retrievalQuestionsForFeed:(PTEFeed *)feed
+                          refresh:(BOOL)refresh
                        completion:(void(^)(BOOL successful))completion;
 
 @end

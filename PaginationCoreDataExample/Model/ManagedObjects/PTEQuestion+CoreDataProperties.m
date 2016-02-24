@@ -17,6 +17,7 @@
 @dynamic author;
 @dynamic createdDate;
 @dynamic index;
+@dynamic questionID;
 @dynamic page;
 
 @end

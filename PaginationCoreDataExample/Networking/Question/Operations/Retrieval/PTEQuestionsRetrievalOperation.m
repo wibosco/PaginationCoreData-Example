@@ -20,8 +20,12 @@
 @property (nonatomic, strong) NSManagedObjectID *feedID;
 @property (nonatomic, strong) NSData *data;
 @property (nonatomic, copy) void (^completion)(BOOL successful);
+@property (nonatomic, assign) BOOL refresh;
 
 @property (nonatomic, strong) NSOperationQueue *callBackQueue;
+
+- (NSNumber *)indexOfNewPageInFeed:(PTEFeed *)feed;
+- (void)reorderIndexInFeed:(PTEFeed *)feed;
 
 @end
 
@@ -31,6 +35,7 @@
 
 - (instancetype)initWithFeedID:(NSManagedObjectID *)feedID
                           data:(NSData *)data
+                       refresh:(BOOL)refresh
                     completion:(void(^)(BOOL successful))completion
 {
     self = [super init];
@@ -41,6 +46,7 @@
         self.data = data;
         self.completion = completion;
         self.callBackQueue = [NSOperationQueue currentQueue];
+        self.refresh = refresh;
     }
     
     return self;
@@ -79,7 +85,14 @@
                                                                                                               error:nil];
             
             page.nextHref = [NSString stringWithFormat:@"%@&page=%@", kPTEBaseURLString, @(feed.pages.count + 1)];
-            page.index = @(feed.pages.count);
+            page.index = [self indexOfNewPageInFeed:feed];
+            
+            [self reorderIndexInFeed:feed];
+            
+            if (self.refresh)
+            {
+                feed.arePagesInSequence = @(!page.fullPage.boolValue);
+            }
             
             [feed addPagesObject:page];
             
@@ -98,6 +111,35 @@
              }
          }];
     }
+}
+
+#pragma mark - PageIndex
+
+- (void)reorderIndexInFeed:(PTEFeed *)feed
+{
+    NSArray *pages = feed.orderedPages;
+    
+    for (NSUInteger index = 0; index < pages.count; index++)
+    {
+        PTEPage *page = pages[index];
+        page.index = @(index);
+    }
+}
+
+- (NSNumber *)indexOfNewPageInFeed:(PTEFeed *)feed
+{
+    NSNumber *indexOfNewPage = nil;
+    
+    if (self.refresh)
+    {
+        indexOfNewPage = @(-1);
+    }
+    else
+    {
+        indexOfNewPage = @(feed.pages.count);
+    }
+    
+    return indexOfNewPage;
 }
 
 @end

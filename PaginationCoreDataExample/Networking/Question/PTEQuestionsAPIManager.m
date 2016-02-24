@@ -18,6 +18,7 @@
 #pragma mark - Retrieval
 
 + (void)retrievalQuestionsForFeed:(PTEFeed *)feed
+                          refresh:(BOOL)refresh
                        completion:(void(^)(BOOL successful))completion
 {
     NSURLSession *session = [NSURLSession sharedSession];
@@ -44,6 +45,7 @@
                                                      {
                                                          PTEQuestionsRetrievalOperation *operation = [[PTEQuestionsRetrievalOperation alloc] initWithFeedID:feedObjectID
                                                                                                                                                        data:data
+                                                                                                                                                    refresh:refresh
                                                                                                                                                  completion:completion];
                                                          
                                                          [[PTEQueueManager sharedInstance].queue addOperation:operation];

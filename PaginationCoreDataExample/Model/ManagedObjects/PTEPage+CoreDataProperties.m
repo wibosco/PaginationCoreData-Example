@@ -16,6 +16,7 @@
 @dynamic createdDate;
 @dynamic nextHref;
 @dynamic index;
+@dynamic fullPage;
 @dynamic questions;
 @dynamic feed;
 
