@@ -11,7 +11,7 @@
 #import <CoreDataServices/NSManagedObjectContext+CDSRetrieval.h>
 #import <CoreDataServices/CDSServiceManager.h>
 
-NSString * kPTEBaseURLString = @"https://api.stackexchange.com/2.2/questions?site=stackoverflow";
+NSString * kPTEBaseURLString = @"https://api.stackexchange.com/2.2/questions?order=desc&sort=creation&site=stackoverflow";
 
 @implementation PTEFeed
 
