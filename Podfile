@@ -1,5 +1,7 @@
 platform :ios, "9.0"
 
-pod 'PureLayout'
-pod 'CoreDataServices'
-pod 'FetchedResultsController'
+target "PaginationCoreDataExample" do
+	pod 'PureLayout'
+	pod 'CoreDataServices'
+	pod 'FetchedResultsController'
+end
